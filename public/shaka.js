@@ -1,5 +1,5 @@
 var manifestUri =
-    'video_dash.mpd';
+    'https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd';
 
 function initApp() {
   // Install built-in polyfills to patch browser incompatibilities.
@@ -44,4 +44,16 @@ function onError(error) {
   console.error('Error code', error.code, 'object', error);
 }
 
-document.addEventListener('DOMContentLoaded', initApp);
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service_worker.js').then(function() {
+    console.log('Service worker registered successfully');
+  }).catch(function(err) {
+    console.error('Error registering service worker', err);
+  });
+} else {
+  console.error('Browser doesn\'t support service workers');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  initApp()
+});
