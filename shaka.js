@@ -23,17 +23,6 @@ function initPlayer() {
   // Attach player to the window to make it easy to access in the JS console.
   window.player = player;
 
-  player.configure({
-    streaming: {
-      bufferBehind: 0,
-      bufferingGoal: 5,
-      rebufferingGoal: 1,
-      smallGapLimit: 0.5,
-      startAtSegmentBoundary: true,
-      safeSeekOffset: 3
-    }
-  });
-
   // Listen for error events.
   player.addEventListener('error', onErrorEvent);
 
