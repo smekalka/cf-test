@@ -1,5 +1,5 @@
 var manifestUri =
-    'video.mp4';
+    'https://storage.googleapis.com/shaka-demo-assets/angel-one/dash.mpd';
 
 function initApp() {
   // Install built-in polyfills to patch browser incompatibilities.
