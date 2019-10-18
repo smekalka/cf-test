@@ -1,25 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
+import Helmet from 'react-helmet';
 import './App.css';
 
 function App() {
+  const videoId = '6ce79922d16a4b8a00628a450b9e0c1a';
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Helmet>
+        <script data-cfasync="false" defer type="text/javascript" src={ `https://embed.cloudflarestream.com/embed/r4xu.fla9.latest.js?video=${videoId}`} />
+      </Helmet>
+      <div dangerouslySetInnerHTML={{ __html: `
+        <stream
+          class="stream"
+          height="${window.innerHeight}"
+          width="${window.innerWidth}"
+          src="${videoId}"
+          loop
+          muted
+          preload
+          autoplay
+        ></stream>
+      ` }}
+      />
+    </>
   );
 }
 
